@@ -7,7 +7,7 @@
 
     <style>
         .preloader {
-			position: fixed;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -33,7 +33,12 @@
     <header class="main-header">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="<?php bloginfo('template_url') ?>/assets/img/logo.png" alt=""> BlueRex</a>
+                <a class="navbar-brand" href="<?php echo home_url('/')?>">
+                    <?php $custom_logo = wp_get_attachment_image_src( get_theme_mod('custom_logo') ); if($custom_logo): ?>
+                        <img src="<?php echo $custom_logo[0] ?>" alt="<?php bloginfo('name') ?>">
+                    <?php endif; ?>
+                    <?php bloginfo('name') ?>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">

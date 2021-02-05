@@ -94,8 +94,8 @@ if ( ! function_exists( 'bluerex_setup' ) ) :
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height'      => 250,
-				'width'       => 250,
+				'height'      => 69,
+				'width'       => 62,
 				'flex-width'  => true,
 				'flex-height' => true,
 			)
@@ -153,8 +153,8 @@ function bluerex_scripts() {
 	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' );
 	wp_enqueue_script( 'jquery' );
 
-	wp_enqueue_script( 'bluerex-bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js' );
 	wp_enqueue_script( 'bluerex-popper-js', 'https://unpkg.com/@popperjs/core@2' );
+	wp_enqueue_script( 'bluerex-bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js' );
 	wp_enqueue_script( 'bluerex-baguetteBox-js', get_template_directory_uri() . '/assets/js/baguetteBox.min.js' );
 	wp_enqueue_script( 'bluerex-main-js', get_template_directory_uri() . '/assets/js/main.js' );
 	wp_enqueue_script( 'bluerex-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
@@ -192,3 +192,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// Custom code
+function bluerex_debug($data) {
+	echo '<pre>' . print_r($data, 1) . '</pre>';
+}
