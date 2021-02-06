@@ -1,62 +1,62 @@
 <?php get_header('main') ?>
 
-<section class="section-watch section-tabs">
+<?php
+$design_cat = get_category(3);
+
+if($design_cat):
+    $posts = get_posts( array(
+        'numberposts' => 3,
+        'category' => $design_cat->term_id,
+    ) );
+?>
+<section class="section-watch section-tabs" <?php echo blurex_get_background('fonovoe_izobrazhenie', $design_cat) ?>>
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mb-5">
-                <h3>Dream Big Inspire the World</h3>
-                <h4>We turn creative ideas into your business.</h4>
-
+                <?php if( get_field('zagolovok', $design_cat) ):?>
+                    <h3><?php the_field('zagolovok', $design_cat) ?></h3>
+                <?php endif; ?>
+                <?php if( $design_cat->description ):?>
+                    <h4><?php echo $design_cat->description ?></h4>
+                <?php endif; ?>
                 <ul class="nav nav-pills" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link rounded-pill active" id="webdesign-tab" data-bs-toggle="tab"
-                            href="#webdesign" role="tab" aria-controls="webdesign" aria-selected="true">Web
-                            design</a>
+                    <?php
+                    $data = [];
+                    $i = 0;
+                    foreach($posts as $post):
+                        setup_postdata($post);
+                        $data[$i]['post_name'] = $post->post_name;
+                        $data[$i]['url'] = get_the_permalink();
+                        $data[$i]['content'] = get_the_content('');
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link rounded-pill <? if(!$i) echo 'active' ?>" id="<?php echo $post->post_name ?>-tab" data-bs-toggle="tab" href="#<?php echo $post->post_name ?>" role="tab" aria-controls="webdesign" aria-selected="true"><?php the_title() ?></a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link rounded-pill" id="mobileapp-tab" data-bs-toggle="tab" href="#mobileapp"
-                            role="tab" aria-controls="mobileapp" aria-selected="false">Mobile app</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link rounded-pill" id="branding-tab" data-bs-toggle="tab" href="#branding"
-                            role="tab" aria-controls="branding" aria-selected="false">Branding</a>
-                    </li>
+                    <?php $i++; endforeach; ?>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="webdesign" role="tabpanel"
-                        aria-labelledby="home-tab">
-                        <p>webdesign Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut
-                            rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing
-                            elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.Lorem ipsum dolor sit am et,
-                            consec tetur adipi scing elit.</p>
-                        <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
+                    <?php foreach($data as $k => $item): ?>
+                    <div class="tab-pane fade show <? if(!$k) echo 'active' ?>" id="<?php echo $item['post_name'] ?>" role="tabpanel" aria-labelledby="<?php echo $item['post_name'] ?>-tab">
+                        <?php echo $item['content'] ?>
+                        <p><a href="<?php echo $item['url'] ?>" class="btn btn-pink btn-shadow"><?php echo __('Read more', 'bluerex') ?></a></p>
                     </div>
-                    <div class="tab-pane fade" id="mobileapp" role="tabpanel" aria-labelledby="profile-tab">
-                        <p>mobileapp Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut
-                            rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing
-                            elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.Lorem ipsum dolor sit am et,
-                            consec tetur adipi scing elit.</p>
-                        <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
-                    </div>
-                    <div class="tab-pane fade" id="branding" role="tabpanel" aria-labelledby="contact-tab">
-                        <p>branding Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut
-                            rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing
-                            elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.Lorem ipsum dolor sit am et,
-                            consec tetur adipi scing elit.</p>
-                        <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <!-- /.col-md-6 -->
 
             <div class="col-lg-6 text-center">
-                <img src="<?php bloginfo('template_url') ?>/assets/img/watch.png" alt="">
+                <?php if( get_field('dopolnitelnoe_izobrazhenie', $design_cat) ): ?>
+                <img src="<?php echo get_field('dopolnitelnoe_izobrazhenie', $design_cat) ?>" alt="">
+                <?php endif; ?>
             </div>
             <!-- /.col-md-6 -->
         </div>
     </div>
+    <?php wp_reset_postdata(); unset($data, $posts); ?>
 </section>
 <!-- /.section-watch -->
+<?php endif; ?>
 
 <section class="section-progress text-center">
     <div class="container">
