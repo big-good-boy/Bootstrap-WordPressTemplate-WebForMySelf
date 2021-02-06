@@ -30,7 +30,7 @@
 
     <button class="scrollToTop"><i class="fas fa-angle-up"></i></button>
 
-    <header class="main-header">
+    <header class="main-header" <?php echo blurex_get_background('fon_shapki') ?>>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo home_url('/')?>">
@@ -52,26 +52,32 @@
                         'menu_class' => 'navbar-nav ms-auto mb-2 mb-lg-0'
                     ) )
                     ?>
-                    <!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Product</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Reviews</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Faq</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    </ul> -->
                 </div>
             </div>
         </nav>
         <div class="main-header-text">
-            <h3>We are best and creative agency</h3>
-            <h4>We turn creative ideas into your business.</h4>
-            <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese
-                terds.</p>
+            <?php if( get_field('zagolovok_1') ):?>
+                <h3><?php the_field('zagolovok_1') ?></h3>
+            <?php endif; ?>
+            <?php if( get_field('zagolovok_2') ):?>
+                <h4><?php the_field('zagolovok_2') ?></h4>
+            <?php endif; ?>
+            <?php if( get_field('tekst') ):?>
+                <p><?php the_field('tekst') ?></p>
+            <?php endif; ?>
             <div class="main-header-buttons">
-                <button type="button" class="btn btn-pink rounded-pill">Our story</button>
-                <button type="button" class="btn btn-violet rounded-pill">Read more</button>
+                <?php
+                if( get_field('knopka_1') ):
+                $link = get_field('knopka_1');
+                ?>
+                    <a href="<?php echo esc_url($link['url']); ?>" class="btn btn-pink rounded-pill"><?php echo esc_html($link['title']); ?></a>
+                <?php endif; ?>
+                <?php
+                if( get_field('knopka_2') ):
+                $link = get_field('knopka_2');
+                ?>
+                    <a href="<?php echo esc_url($link['url']); ?>" class="btn btn-violet rounded-pill"><?php echo esc_html($link['title']); ?></a>
+                <?php endif; ?>
             </div>
         </div>
         <!-- /.main-header-text -->
