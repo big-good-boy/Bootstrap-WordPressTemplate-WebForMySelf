@@ -46,6 +46,12 @@ h4 {
     border: 1px solid #DA1757;
 }
 
+.navbar-expand-lg .navbar-nav a {
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+}
+
 /* ========================= header ========================= */
 .main-header {
     background: url(../img/main1.jpg) center no-repeat;

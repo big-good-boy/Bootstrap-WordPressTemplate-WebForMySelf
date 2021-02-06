@@ -50,7 +50,7 @@ if ( ! function_exists( 'bluerex_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'bluerex' ),
+				'header_menu' => esc_html__( 'Header menu', 'bluerex' ),
 			)
 		);
 
