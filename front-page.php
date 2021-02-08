@@ -2,7 +2,6 @@
 
 <?php
 $design_cat = get_category(3);
-
 if($design_cat):
     $posts = get_posts( array(
         'numberposts' => 3,
@@ -47,7 +46,7 @@ if($design_cat):
 
             <div class="col-lg-6 text-center">
                 <?php if( get_field('dopolnitelnoe_izobrazhenie', $design_cat) ): ?>
-                <img src="<?php echo get_field('dopolnitelnoe_izobrazhenie', $design_cat) ?>" alt="">
+                    <img src="<?php echo get_field('dopolnitelnoe_izobrazhenie', $design_cat) ?>" alt="">
                 <?php endif; ?>
             </div>
             <!-- /.col-md-6 -->
@@ -56,39 +55,30 @@ if($design_cat):
     <?php wp_reset_postdata(); unset($data, $posts); ?>
 </section>
 <!-- /.section-watch -->
-<?php endif; ?>
+<?php endif; // if $design_cat ?>
 
+<?php
+    $posts = get_posts( array(
+        'numberposts' => 3,
+        'category' => 4,
+    ) );
+    if($posts):
+?>
 <section class="section-progress text-center">
     <div class="container">
         <div class="row">
+            <?php foreach($posts as $post): ?>
             <div class="col-md-4 progress-item">
-                <div><i class="fas fa-bullhorn"></i></div>
-                <div class="num">500+</div>
-                <h4><span>Successfully</span> completed projects</h4>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem
-                    ipsum ese terds.</p>
+                <?php echo $post->post_content; ?>
             </div>
             <!-- /.col-md-4 progress-item -->
-            <div class="col-md-4 progress-item">
-                <div><i class="fas fa-bullhorn"></i></div>
-                <div class="num">254+</div>
-                <h4><span>Highly</span> specialised employees</h4>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem
-                    ipsum ese terds.</p>
-            </div>
-            <!-- /.col-md-4 progress-item -->
-            <div class="col-md-4 progress-item">
-                <div><i class="fas fa-bullhorn"></i></div>
-                <div class="num">45+</div>
-                <h4><span>Awards</span> around the world</h4>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem
-                    ipsum ese terds.</p>
-            </div>
-            <!-- /.col-md-4 progress-item -->
+            <?php endforeach; ?>
         </div>
     </div>
+    <?php unset($posts); ?>
 </section>
 <!-- /.section-progress -->
+<?php endif; ?>
 
 <section class="section-lets text-center">
     <div class="container">
@@ -96,8 +86,7 @@ if($design_cat):
             <div class="col-md-12">
                 <h3>Let's Grow Together</h3>
                 <h4>We turn creative ideas into your business.</h4>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem
-                    ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit.</p>
+                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit.</p>
                 <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
             </div>
         </div>
@@ -111,23 +100,19 @@ if($design_cat):
             <div class="col-lg-6">
                 <h3>We are best and creative agency</h3>
                 <h4>We turn creative ideas into your business.</h4>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem
-                    ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut
-                    rhoncus lorem ipsum ese terds.</p>
+                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.</p>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <span><i class="far fa-comments"></i></span>
                         <h2>Graphic Design</h2>
-                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus
-                            lorem ipsum ese terds.</p>
+                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.</p>
                         <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
                     </div>
                     <!-- /.col-md-6 -->
                     <div class="col-md-6 mb-3">
                         <span><i class="fas fa-bullhorn"></i></span>
                         <h2>Graphic Design</h2>
-                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus
-                            lorem ipsum ese terds.</p>
+                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.</p>
                         <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
                     </div>
                     <!-- /.col-md-6 -->
@@ -152,94 +137,61 @@ if($design_cat):
         <div class="row">
             <div class="col-md-8 offset-md-2 text-center">
                 <h4>Our Recent Work</h4>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem
-                    ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut
-                    rhoncus lorem ipsum ese terds.Lorem ipsum dolor sit am et, consec tetur adipi scing elit.</p>
+                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.Lorem ipsum dolor sit am et, consec tetur adipi scing elit.</p>
             </div>
             <!-- /.col-md-8 -->
 
             <div class="col-md-12">
                 <ul class="nav nav-pills justify-content-center" id="myTab-gallery" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link rounded-pill active" id="webdesign2-tab" data-bs-toggle="tab"
-                            href="#webdesign2" role="tab" aria-controls="webdesign2" aria-selected="true">Web
-                            design</a>
+                        <a class="nav-link rounded-pill active" id="webdesign2-tab" data-bs-toggle="tab" href="#webdesign2" role="tab" aria-controls="webdesign2" aria-selected="true">Web design</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link rounded-pill" id="mobileapp2-tab" data-bs-toggle="tab" href="#mobileapp2"
-                            role="tab" aria-controls="mobileapp2" aria-selected="false">Mobile app</a>
+                        <a class="nav-link rounded-pill" id="mobileapp2-tab" data-bs-toggle="tab" href="#mobileapp2" role="tab" aria-controls="mobileapp2" aria-selected="false">Mobile app</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link rounded-pill" id="branding2-tab" data-bs-toggle="tab" href="#branding2"
-                            role="tab" aria-controls="branding2" aria-selected="false">Branding</a>
+                        <a class="nav-link rounded-pill" id="branding2-tab" data-bs-toggle="tab" href="#branding2" role="tab" aria-controls="branding2" aria-selected="false">Branding</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="webdesign2" role="tabpanel"
                         aria-labelledby="home-tab">
                         <div class="gallery text-center row">
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/1.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/1_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/2.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/2_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/3.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/3_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/4.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/4_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/5.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/5_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/6.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/6_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/7.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/7_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/8.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/8_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/9.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/9_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/1.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/1_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/2.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/2_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/3.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/3_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/4.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/4_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/5.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/5_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/6.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/6_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/7.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/7_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/8.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/8_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/9.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/9_s.jpg" alt=""></a></div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="mobileapp2" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="gallery text-center row">
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/7.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/7_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/8.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/8_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/9.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/9_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/1.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/1_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/2.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/2_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/3.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/3_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/4.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/4_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/5.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/5_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/6.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/6_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/7.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/7_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/8.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/8_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/9.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/9_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/1.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/1_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/2.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/2_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/3.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/3_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/4.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/4_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/5.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/5_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/6.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/6_s.jpg" alt=""></a></div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="branding2" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="gallery text-center row">
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/4.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/4_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/5.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/5_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/6.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/6_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/7.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/7_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/8.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/8_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/9.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/9_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/1.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/1_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/2.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/2_s.jpg" alt=""></a></div>
-                            <div class="col-sm-4 gallery-item"><a href="img/gallery/3.jpg"><img
-                                        src="<?php bloginfo('template_url') ?>/assets/img/gallery/3_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/4.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/4_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/5.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/5_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/6.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/6_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/7.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/7_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/8.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/8_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/9.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/9_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/1.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/1_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/2.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/2_s.jpg" alt=""></a></div>
+                            <div class="col-sm-4 gallery-item"><a href="img/gallery/3.jpg"><img src="<?php bloginfo('template_url') ?>/assets/img/gallery/3_s.jpg" alt=""></a></div>
                         </div>
                     </div>
                 </div>

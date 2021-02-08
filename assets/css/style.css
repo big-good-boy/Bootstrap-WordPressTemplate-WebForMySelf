@@ -180,6 +180,9 @@ h4 {
     height: 72px;
     overflow: hidden;
 }
+.section-progress h4 strong {
+    font-weight: bold;
+}
 
 .section-progress .progress-item {
     padding-top: 80px;
