@@ -83,7 +83,8 @@ if($design_cat):
 <?php
 $lets_cat = get_category(5);
 if($lets_cat):
-?><section class="section-lets text-center" <?php echo blurex_get_background('fonovoe_izobrazhenie', $lets_cat) ?>>
+?>
+<section class="section-lets text-center" <?php echo blurex_get_background('fonovoe_izobrazhenie', $lets_cat) ?>>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
