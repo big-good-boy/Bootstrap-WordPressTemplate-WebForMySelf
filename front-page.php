@@ -78,21 +78,27 @@ if($design_cat):
     <?php unset($posts); ?>
 </section>
 <!-- /.section-progress -->
-<?php endif; ?>
+<?php endif; // progress ?>
 
-<section class="section-lets text-center">
+<?php
+$lets_cat = get_category(5);
+if($lets_cat):
+?><section class="section-lets text-center" <?php echo blurex_get_background('fonovoe_izobrazhenie', $lets_cat) ?>>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Let's Grow Together</h3>
-                <h4>We turn creative ideas into your business.</h4>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit.</p>
-                <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
+                <h3><?php echo $lets_cat->name ?></h3>
+                <?php if(get_field('zagolovok', $lets_cat)): ?>
+                    <h4><?php echo get_field('zagolovok', $lets_cat) ?></h4>
+                <?php endif; ?>
+                <p><?php echo $lets_cat->description ?></p>
+                <p><a href="<?php echo get_category_link(5) ?>" class="btn btn-pink btn-shadow"><?php echo __('Read more', 'blurex') ?></a></p>
             </div>
         </div>
     </div>
 </section>
 <!-- /.section-lets text-center -->
+<?php endif; // $lets_cat ?>
 
 <section class="section-design">
     <div class="container">
