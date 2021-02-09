@@ -101,43 +101,53 @@ if($lets_cat):
 <!-- /.section-lets text-center -->
 <?php endif; // $lets_cat ?>
 
+<?php
+$graphic_cat = get_category(6);
+if($graphic_cat):
+    $posts = get_posts( array(
+        'numberposts' => 2,
+        'category' => $graphic_cat->term_id,
+    ) );
+?>
 <section class="section-design">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h3>We are best and creative agency</h3>
-                <h4>We turn creative ideas into your business.</h4>
-                <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.</p>
+                <h3><?php echo $graphic_cat->name ?></h3>
+                <h4><?php echo get_field('zagolovok', $graphic_cat) ?></h4>
+                <p><?php echo $graphic_cat->description; ?></p>
                 <div class="row">
+                    <?php foreach($posts as $post): setup_postdata($post); ?>
                     <div class="col-md-6 mb-3">
-                        <span><i class="far fa-comments"></i></span>
-                        <h2>Graphic Design</h2>
-                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.</p>
-                        <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
+                        <span><?php the_field('ikonka_fontawesome') ?></span>
+                        <h2><?php the_title() ?></h2>
+                        <?php the_content('') ?>
+                        <p><a href="<?php the_permalink() ?>" class="btn btn-pink btn-shadow"><?php echo __('Read more', 'bluerex') ?></a></p>
                     </div>
-                    <!-- /.col-md-6 -->
-                    <div class="col-md-6 mb-3">
-                        <span><i class="fas fa-bullhorn"></i></span>
-                        <h2>Graphic Design</h2>
-                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds.</p>
-                        <p><a href="#" class="btn btn-pink btn-shadow">Read more</a></p>
-                    </div>
-                    <!-- /.col-md-6 -->
+                    <?php endforeach; ?>
                 </div>
                 <!-- /.row -->
             </div>
             <div class="col-lg-6">
+                <?php
+                if( $video = get_field('video', $graphic_cat) ):
+                    $video = str_replace('watch?v=', 'embed/', $video);
+                ?>
                 <div class="ratio ratio-16x9 mt-5">
                     <iframe id="videoPlayer" class="embed-responsive-item"
-                        src="https://www.youtube.com/embed/wdyfS9oQues?enablejsapi=1&amp;html5=1&amp;rel=0&amp;&amp;showinfo=0"
+                        src="<?php echo $video ?>?enablejsapi=1&amp;html5=1&amp;rel=0&amp;&amp;showinfo=0"
                         allowfullscreen></iframe>
                     <div id="videoPlayBtn"></div>
                 </div>
+                <?php endif; ?>
             </div>
+            <!-- /.col-lg-6 -->
         </div>
     </div>
+    <?php wp_reset_postdata(); unset($posts); ?>
 </section>
 <!-- /.section-design -->
+<?php endif; // $graphic_cat ?>
 
 <section class="section-work section-tabs">
     <div class="container">
