@@ -204,3 +204,24 @@ function blurex_get_background($field, $cat = null, $cover = true) {
 	}
 	return null;
 }
+
+add_action('init', 'bluerex_reviews');
+function bluerex_reviews() {
+	register_post_type('reviews', array(
+		'labels'        => array(
+			'name'          => 'Отзывы',
+			'singular_name' => 'Отзыв',
+			'add_new'       => __('Добавить новый отзыв', bluerex),
+			'add_new_item'  => __('Новый отзыв', bluerex),
+			'edit_item'     => __('Редактировать', bluerex),
+			'new_item'      => __('Новый отзыв', bluerex),
+			'view_item'     => __('Посмотреть', bluerex),
+			'menu_name'     => 'Отзывы клиентов',
+			'all_items'     => 'Все отзывы',
+		),
+		'public'       => true,
+		'supports'     => array('title', 'editor', 'thumbnail'),
+		'menu_icon'    =>'dashicons-universal-access',
+		'show_in_rest' => true,
+	) );
+}

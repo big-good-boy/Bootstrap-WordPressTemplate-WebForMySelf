@@ -215,83 +215,47 @@ if($work_cat):
 </section>
 <!-- /.section-brands -->
 
+<?php
+$posts = get_posts( array(
+    'post_type' => 'reviews',
+) );
+if($posts):
+?>
 <section class="section-reviews">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+            <?php for($i = 0; $i < count($posts); $i++): ?>
+            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $i; ?>" <? if(!$i) echo 'class="active"' ?>></li>
+            <?php endfor; ?>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <?php $i = 0; foreach($posts as $post): ?>
+            <div class="carousel-item <? if(!$i) echo 'active' ?>">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-7">
                             <div class="carousel-caption">
-                                <h3>Our Happy Client</h3>
-                                <h4>Testimonials</h4>
+                                <h3><?php echo $post->post_title ?></h3>
+                                <h4><?php the_field('zagolovok') ?></h4>
                                 <figure>
                                     <blockquote class="blockquote">
-                                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit.</p>
+                                        <?php echo $post->post_content ?>
                                     </blockquote>
-                                    <figcaption class="blockquote-footer">Mr. John Doe</figcaption>
+                                    <figcaption class="blockquote-footer"><?php the_field('avtor') ?></figcaption>
                                 </figure>
                             </div>
                         </div>
                         <!-- /.col-sm-7 -->
                         <div class="col-sm-5 d-none d-sm-block">
-                            <img src="<?php bloginfo('template_url') ?>/assets/img/client.png" alt="">
+                            <?php if(has_post_thumbnail($post->ID)): ?>
+                                <?php echo get_the_post_thumbnail($post->ID) ?>
+                            <?php endif; ?>
                         </div>
                         <!-- /.col-sm-5 -->
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <div class="carousel-caption">
-                                <h3>Our Happy Client</h3>
-                                <h4>Testimonials</h4>
-                                <figure>
-                                    <blockquote class="blockquote">
-                                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit.</p>
-                                    </blockquote>
-                                    <figcaption class="blockquote-footer">Mr. Jack</figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-7 -->
-                        <div class="col-sm-5 d-none d-sm-block">
-                            <img src="<?php bloginfo('template_url') ?>/assets/img/client.png" alt="">
-                        </div>
-                        <!-- /.col-sm-5 -->
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <div class="carousel-caption">
-                                <h3>Our Happy Client</h3>
-                                <h4>Testimonials</h4>
-                                <figure>
-                                    <blockquote class="blockquote">
-                                        <p>Lorem ipsum dolor sit am et, consec tetur adipi scing elit. Sed sodales enim ut rhoncus lorem ipsum ese terds. Lorem ipsum dolor sit am et, consec tetur adipi scing elit.</p>
-                                    </blockquote>
-                                    <figcaption class="blockquote-footer">Mr. David</figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-7 -->
-                        <div class="col-sm-5 d-none d-sm-block">
-                            <img src="<?php bloginfo('template_url') ?>/assets/img/client.png" alt="">
-                        </div>
-                        <!-- /.col-sm-5 -->
-                    </div>
-                </div>
-            </div>
+            <?php $i++; endforeach; ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -304,6 +268,7 @@ if($work_cat):
     </div>
 </section>
 <!-- /.section-rewievs -->
+<?php endif; // $rewievs ?>
 
 <section class="section-form text-center">
     <div class="container">
