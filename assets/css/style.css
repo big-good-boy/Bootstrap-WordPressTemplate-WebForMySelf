@@ -441,7 +441,7 @@ div.wpcf7 .ajax-loader {
     margin-bottom: 30px;
     min-height: 280px;
 }
-.article-preview:hover {
+.article-preview.category:hover {
     box-shadow: 0 14px 30px -15px rgba(0,0,0,.75);
 }
 .article-preview h2 {

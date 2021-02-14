@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 <?php if(have_posts()) : while ( have_posts() ) : the_post(); ?>
-                    <article class="article-preview">
+                    <article class="article-preview category">
                         <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
                         <p><span class="article-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> <?php the_time("d.m.Y")?></span></p>
                         <div class="article-excerpt">
