@@ -144,6 +144,17 @@ function bluerex_widgets_init() {
 			'after_title'   => '</h5>',
 		)
 	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Sidebar Widgets', 'bluerex' ),
+			'id'            => 'sidebar-widgets',
+			'description'   => esc_html__( 'Add widgets here.', 'bluerex' ),
+			'before_widget' => '<div id="%1$s" class="sidebar-widget widget-categories widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
+		)
+	);
 }
 add_action( 'widgets_init', 'bluerex_widgets_init' );
 
@@ -235,4 +246,13 @@ function bluerex_reviews() {
 		'menu_icon'    =>'dashicons-universal-access',
 		'show_in_rest' => true,
 	) );
+}
+
+add_filter('navigation_markup_template', 'bluerex_navigation_template', 10, 2 );
+function bluerex_navigation_template( $template, $class ){
+	return '
+	<nav class="navigation %1$s" role="navigation">
+		<div class="nav-links">%3$s</div>
+	</nav>    
+	';
 }

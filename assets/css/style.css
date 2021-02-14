@@ -517,6 +517,35 @@ div.wpcf7 .ajax-loader {
 }
 
 /* ========================= pagination ========================= */
+ul.page-numbers{
+	list-style: none;
+	display: flex;
+    padding-left: 0;
+}
+ul.page-numbers a.page-numbers,
+ul.page-numbers span{
+	color: #da1757;
+	transition: all .5s;
+	padding: .5rem 1rem;
+	position: relative;
+	display: block;
+	margin-left: -1px;
+	line-height: 1.25;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+}
+ul.page-numbers span.current{
+	background-color: #da1757;
+	border-color: #da1757;
+	color: #fff;
+}
+ul.page-numbers a.page-numbers:hover{
+	background-color: #f42267;
+	color: #fff;
+	border-color: #f42267;
+	text-decoration: none;
+}
+
 .page-link {
     color: #DA1757;
     transition: all .5s;
